@@ -9,10 +9,10 @@ DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
 DATE_COLUMN = "date/time"
 
 def load_data(nrows):
-	data=pd.read_csv(DATA_URL,rows=nrows)
+	data=pd.read_csv(DATA_URL,nrows=nrows)
 	lowercase=lambda x: str(x).lower()
 	data.rename(lowercase,axis="colums",inplace=True)
-	data[DATA_COLUMNS]=pd.to_datatime(data[DATA_COLUMN])
+	data[DATE_COLUMNS]=pd.to_datatime(data[DATE_COLUMN])
 	return data
 
 data_load_state=st.text("Loading Data...")
